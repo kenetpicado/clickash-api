@@ -23,16 +23,16 @@ class CompanySaleController extends Controller
         return $company->sales()
             ->with(['raffle:id,name', 'user:id,name'])
             ->when(
-                !$company->imOwner(),
-                fn($query) => $query->where('user_id', auth()->id())
+                ! $company->imOwner(),
+                fn ($query) => $query->where('user_id', auth()->id())
             )
             ->when(
                 $request->hour,
-                fn($query) => $query->where('hour', $request->hour)
+                fn ($query) => $query->where('hour', $request->hour)
             )
             ->when(
                 $request->raffle_id,
-                fn($query) => $query->where('raffle_id', $request->raffle_id)
+                fn ($query) => $query->where('raffle_id', $request->raffle_id)
             )
             ->latest()
             ->paginate();

@@ -19,7 +19,7 @@ class VerifyCompanyHasSale
         $sale = $request->route('sale');
 
         if ($company && $sale && $company->id !== $sale->company_id) {
-            abort(404, "No se encontró la venta");
+            abort(404, 'No se encontró la venta');
         }
 
         return $next($request);

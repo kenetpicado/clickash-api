@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Models\Raffle;
 use App\Models\Sale;
-use App\Models\SaleItem;
 
 class CompanySaleService
 {
