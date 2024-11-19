@@ -16,8 +16,10 @@ class AuthService
             $workspaceCode = $this->getWorkspaceCode();
         } while (Company::where('workspace_code', $workspaceCode)->exists());
 
+        $name = explode(' ', $user->name)[0];
+
         $company = $user->company()->create([
-            'name' => 'Rifas ' . explode(' ', $user->name)[0],
+            'name' => 'Rifas ' . $name,
             'workspace_code' => $workspaceCode,
             'status' => 'ACTIVO',
         ]);
@@ -32,7 +34,7 @@ class AuthService
             });
 
         $company->raffles()->create([
-            'name' => 'Rifa de prueba',
+            'name' => $name . ' Rifa',
             'description' => 'Esta es una rifa de prueba',
             'min' => '01',
             'max' => '99',
