@@ -7,8 +7,10 @@ use Carbon\Carbon;
 
 class CompanyRaffleResultService
 {
-    public function store(array $data, $company, $raffle): void
+    public function store(array $data, $company): void
     {
+        $raffle = $company->raffles()->find($data['raffle_id']);
+
         if ($raffle->is_date) {
             try {
                 Carbon::createFromFormat('d/m', $data['value']);

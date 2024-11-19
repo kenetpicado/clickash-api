@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CompanyRequest;
 use App\Http\Resources\CompanyResource;
 use App\Models\Company;
+use Illuminate\Support\Facades\Gate;
 
 class CompanyController extends Controller
 {
@@ -22,9 +23,7 @@ class CompanyController extends Controller
 
     public function update(CompanyRequest $request, Company $company)
     {
-        if (!$company->imOwner()) {
-            abort(403, 'No puedes editar esta empresa.');
-        }
+        Gate::authorize('company-owner', $company);
 
         $company->update($request->validated());
 

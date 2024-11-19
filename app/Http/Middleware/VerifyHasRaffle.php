@@ -15,7 +15,7 @@ class VerifyHasRaffle
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($raffle = $request->route('raffle')) {
+        if ($raffle = $request->route('raffle') ?? $request->raffle_id) {
             $company = $request->route('company');
 
             $raffle_id = $raffle instanceof \App\Models\Raffle

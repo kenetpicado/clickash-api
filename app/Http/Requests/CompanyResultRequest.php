@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CompanyRaffleResultRequest extends FormRequest
+class CompanyResultRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +24,7 @@ class CompanyRaffleResultRequest extends FormRequest
         return [
             'hour' => ['required', 'date_format:H:i'],
             'value' => ['required', 'string'],
+            'raffle_id' => ['required', 'exists:raffles,id'],
         ];
     }
 }
