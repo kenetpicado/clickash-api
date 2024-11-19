@@ -44,9 +44,10 @@ Route::prefix('v1')->group(function () {
 
         Route::post('workspace', WorkspaceController::class);
 
+        //TODO: Implementar middleware para verificar que una venta pertenezca a la empresa
         Route::apiResource('empresas.ventas', CompanySaleController::class)
             ->parameters(['empresas' => 'company', 'ventas' => 'sale'])
-            //->only(['index', 'store', 'destroy'])
+            ->except(['update'])
             ->middleware(VerifyCompany::class);
     });
 });
