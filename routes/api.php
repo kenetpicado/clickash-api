@@ -4,6 +4,7 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CompanyController;
 use App\Http\Controllers\API\CompanyRaffleController;
 use App\Http\Controllers\API\CompanyResultController;
+use App\Http\Controllers\API\CompanySaleController;
 use App\Http\Controllers\API\ProfileController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\WorkspaceController;
@@ -42,5 +43,10 @@ Route::prefix('v1')->group(function () {
             ->middleware([VerifyCompany::class, VerifyHasRaffle::class]);
 
         Route::post('workspace', WorkspaceController::class);
+
+        Route::apiResource('empresas.ventas', CompanySaleController::class)
+            ->parameters(['empresas' => 'company', 'ventas' => 'sale'])
+            //->only(['index', 'store', 'destroy'])
+            ->middleware(VerifyCompany::class);
     });
 });
