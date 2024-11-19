@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    protected $fillable = ['name', 'status', 'workspace_code'];
+    protected $fillable = ['name', 'status', 'workspace_code', 'user_id'];
 
     public function user()
     {
@@ -21,6 +21,11 @@ class Company extends Model
     public function raffles()
     {
         return $this->hasMany(Raffle::class);
+    }
+
+    public function results()
+    {
+        return $this->hasMany(Result::class);
     }
 
     public function hasThisRaffle($raffle_id)

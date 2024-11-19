@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class VerifyCompany
+class VerifyHasRaffle
 {
     /**
      * Handle an incoming request.
@@ -15,10 +15,16 @@ class VerifyCompany
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $company = $request->route('company');
+        if ($raffle = $request->route('raffle')) {
+            $company = $request->route('company');
 
-        if (!$company->imOwner() && auth()->user()->companies()->where('company_id', $company->id)->doesntExist()) {
-            abort(403, 'No tienes permisos para acceder a esta empresa.');
+            $raffle_id = $raffle instanceof \App\Models\Raffle
+                ? $raffle->id
+                : $raffle;
+
+            if (!$company->hasThisRaffle($raffle_id)) {
+                abort(404, 'No se encontró la rifa.');
+            }
         }
 
         return $next($request);

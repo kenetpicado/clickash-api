@@ -22,8 +22,8 @@ class CompanyController extends Controller
 
     public function update(CompanyRequest $request, Company $company)
     {
-        if ($company->user_id !== auth()->id()) {
-            abort(403, 'Esta empresa no te pertenece.');
+        if (!$company->imOwner()) {
+            abort(403, 'No puedes editar esta empresa.');
         }
 
         $company->update($request->validated());

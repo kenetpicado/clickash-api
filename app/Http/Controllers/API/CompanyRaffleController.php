@@ -7,7 +7,7 @@ use App\Http\Requests\RaffleRequest;
 use App\Models\Company;
 use App\Models\Raffle;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CompanyRaffleController extends Controller
 {
@@ -18,23 +18,15 @@ class CompanyRaffleController extends Controller
 
     public function store(RaffleRequest $request, Company $company)
     {
-        if (!$company->imOwner()) {
-            abort(403, 'No puedes crear sorteos en esta empresa.');
-        }
+        Gate::authorize('company-owner', $company);
 
         $company->raffles()->create($request->validated());
 
         return response()->noContent(200);
     }
 
-    public function show(Company $company, $raffle)
+    public function show(Company $company, Raffle $raffle)
     {
-        if (!$company->hasThisRaffle($raffle)) {
-            abort(404, 'No se encontró el sorteo.');
-        }
-
-        $raffle = Raffle::find($raffle);
-
         $raffle->available_hours = collect($raffle->schedule)
             ->where('day_number', now()->dayOfWeek)
             ->value('hours');
@@ -51,32 +43,20 @@ class CompanyRaffleController extends Controller
         return $raffle;
     }
 
-    public function update(RaffleRequest $request, Company $company, $raffle)
+    public function update(RaffleRequest $request, Company $company, Raffle $raffle)
     {
-        if (!$company->imOwner()) {
-            abort(403, 'No puedes editar sorteos en esta empresa.');
-        }
+        Gate::authorize('company-owner', $company);
 
-        if (!$company->hasThisRaffle($raffle)) {
-            abort(404, 'No se encontró el sorteo.');
-        }
-
-        Raffle::where('id', $raffle)->update($request->validated());
+        $raffle->update($request->validated());
 
         return response()->noContent(200);
     }
 
-    public function destroy(Company $company, $raffle)
+    public function destroy(Company $company, Raffle $raffle)
     {
-        if (!$company->imOwner()) {
-            abort(403, 'No puedes eliminar sorteos en esta empresa.');
-        }
+        Gate::authorize('company-owner', $company);
 
-        if (!$company->hasThisRaffle($raffle)) {
-            abort(404, 'No se encontró el sorteo.');
-        }
-
-        Raffle::destroy($raffle);
+        $raffle->delete();
 
         return response()->noContent(200);
     }

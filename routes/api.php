@@ -3,15 +3,17 @@
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CompanyController;
 use App\Http\Controllers\API\CompanyRaffleController;
+use App\Http\Controllers\API\CompanyRaffleResultController;
 use App\Http\Controllers\API\ProfileController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\WorkspaceController;
 use App\Http\Middleware\Activity;
 use App\Http\Middleware\VerifyCompany;
+use App\Http\Middleware\VerifyHasRaffle;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
-    Route::post('login', [AuthController::class, 'login'])->middleware('api');
+    Route::post('login', [AuthController::class, 'login']);
 
     Route::post('registro', [AuthController::class, 'register']);
 
@@ -32,8 +34,12 @@ Route::prefix('v1')->group(function () {
 
         Route::apiResource('empresas.rifas', CompanyRaffleController::class)
             ->parameters(['rifas' => 'raffle', 'empresas' => 'company'])
-            ->only(['index', 'store', 'show', 'update', 'destroy'])
-            ->middleware(VerifyCompany::class);
+            ->middleware([VerifyCompany::class, VerifyHasRaffle::class]);
+
+        Route::apiResource('empresas.rifas.resultados', CompanyRaffleResultController::class)
+            ->parameters(['rifas' => 'raffle', 'empresas' => 'company', 'resultados' => 'result'])
+            ->only(['index', 'store', 'destroy'])
+            ->middleware([VerifyCompany::class, VerifyHasRaffle::class]);
 
         Route::post('workspace', WorkspaceController::class);
     });
