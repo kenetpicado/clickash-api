@@ -8,6 +8,7 @@ use App\Models\Company;
 use App\Models\Raffle;
 use App\Models\Result;
 use App\Services\CompanyRaffleResultService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class CompanyRaffleResultController extends Controller
@@ -18,9 +19,13 @@ class CompanyRaffleResultController extends Controller
         //
     }
 
-    public function index(Company $company, Raffle $raffle)
+    public function index(Request $request, Company $company, Raffle $raffle)
     {
-        return $company->results()->paginate();
+        return $company->results()
+            ->with('raffle:id,name,background_color')
+            ->when($request->hour, fn($query) => $query->where('hour', $request->hour))
+            ->latest()
+            ->paginate();
     }
 
     public function store(CompanyRaffleResultRequest $request, Company $company, Raffle $raffle)
