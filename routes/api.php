@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CompanyController;
 use App\Http\Controllers\API\CompanyRaffleController;
+use App\Http\Controllers\API\CompanyReportController;
 use App\Http\Controllers\API\CompanyResultController;
 use App\Http\Controllers\API\CompanySaleController;
 use App\Http\Controllers\API\ProfileController;
@@ -49,5 +50,8 @@ Route::prefix('v1')->group(function () {
             ->parameters(['empresas' => 'company', 'ventas' => 'sale'])
             ->except(['update'])
             ->middleware([VerifyCompany::class, VerifyHasRaffle::class, VerifyCompanyHasSale::class]);
+
+        Route::get('empresas/{company}/reporte', CompanyReportController::class)
+            ->middleware([VerifyCompany::class, VerifyHasRaffle::class]);
     });
 });

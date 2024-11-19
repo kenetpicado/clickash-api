@@ -20,4 +20,9 @@ class SaleItem extends Model
     protected $casts = [
         'super_x' => 'boolean',
     ];
+
+    public function sale()
+    {
+        return $this->belongsTo(Sale::class);
+    }
 }
