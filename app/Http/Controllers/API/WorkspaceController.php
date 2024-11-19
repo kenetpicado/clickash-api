@@ -13,7 +13,7 @@ class WorkspaceController extends Controller
     {
         $company = Company::where('workspace_code', $request->workspace_code)->first();
 
-        if (!$company) {
+        if (! $company) {
             abort(404, 'No se encontró el espacio de trabajo.');
         }
 

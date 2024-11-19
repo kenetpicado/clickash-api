@@ -17,7 +17,7 @@ class VerifyCompany
     {
         $company = $request->route('company');
 
-        if (!$company->imOwner() && auth()->user()->companies()->where('company_id', $company->id)->doesntExist()) {
+        if (! $company->imOwner() && auth()->user()->companies()->where('company_id', $company->id)->doesntExist()) {
             abort(403, 'No puedes acceder a esta empresa');
         }
 

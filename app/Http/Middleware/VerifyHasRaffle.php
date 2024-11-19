@@ -22,7 +22,7 @@ class VerifyHasRaffle
                 ? $raffle->id
                 : $raffle;
 
-            if (!$company->hasThisRaffle($raffle_id)) {
+            if (! $company->hasThisRaffle($raffle_id)) {
                 abort(404, 'No se encontró la rifa.');
             }
         }

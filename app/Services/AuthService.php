@@ -19,7 +19,7 @@ class AuthService
         $name = explode(' ', $user->name)[0];
 
         $company = $user->company()->create([
-            'name' => 'Rifas ' . $name,
+            'name' => 'Rifas '.$name,
             'workspace_code' => $workspaceCode,
             'status' => 'ACTIVO',
         ]);
@@ -34,7 +34,7 @@ class AuthService
             });
 
         $company->raffles()->create([
-            'name' => $name . ' Rifa',
+            'name' => $name.' Rifa',
             'description' => 'Esta es una rifa de prueba',
             'min' => '01',
             'max' => '99',
@@ -50,7 +50,7 @@ class AuthService
     {
         $user = User::where('username', $credentials['username'])->first();
 
-        if (!Hash::check($credentials['password'], $user->password)) {
+        if (! Hash::check($credentials['password'], $user->password)) {
             abort(401, 'Contraseña incorrecta');
         }
 

@@ -23,7 +23,7 @@ class ProfileRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:255'],
-            'username' => ['required', 'max:255', 'unique:users,username,' . auth()->id()]
+            'username' => ['required', 'max:255', 'unique:users,username,'.auth()->id()],
         ];
     }
 }

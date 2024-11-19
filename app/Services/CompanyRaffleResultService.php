@@ -19,11 +19,11 @@ class CompanyRaffleResultService
             }
         } else {
             if ($data['value'] < $raffle->min || $data['value'] > $raffle->max) {
-                abort(422, 'El valor debe estar entre ' . $raffle->min . ' y ' . $raffle->max);
+                abort(422, 'El valor debe estar entre '.$raffle->min.' y '.$raffle->max);
             }
 
             if (strlen($data['value']) !== strlen($raffle->max)) {
-                abort(422, 'El valor debe tener ' . strlen($raffle->max) . ' dígitos');
+                abort(422, 'El valor debe tener '.strlen($raffle->max).' dígitos');
             }
         }
 
