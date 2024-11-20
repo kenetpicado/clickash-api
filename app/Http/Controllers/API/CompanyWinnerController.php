@@ -28,6 +28,7 @@ class CompanyWinnerController extends Controller
             )
             ->where('status', '!=', 'VENDIDO')
             ->with('sale')
+            ->latest()
             ->paginate();
 
         return SaleItemResource::collection($data);
