@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Company;
+use App\Models\Lock;
 use App\Models\Sale;
 use App\Models\User;
 use Carbon\Carbon;
@@ -40,6 +41,10 @@ class AppServiceProvider extends ServiceProvider
 
         Gate::define('sale-show', function (User $user, Sale $sale, Company $company) {
             return $sale->user_id === $user->id || $company->imOwner();
+        });
+
+        Gate::define('lock-destroy', function (User $user, Company $company, Lock $lock) {
+            return $company->imOwner() && $lock->company_id === $company->id;
         });
     }
 }

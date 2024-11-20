@@ -41,7 +41,7 @@ class CompanyLockController extends Controller
 
     public function destroy(Company $company, Lock $lock)
     {
-        Gate::authorize('company-owner', $company);
+        Gate::authorize('lock-destroy', [$company, $lock]);
 
         $lock->delete();
 
