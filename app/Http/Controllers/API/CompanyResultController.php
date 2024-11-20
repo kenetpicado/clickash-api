@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CompanyResultRequest;
+use App\Http\Resources\ResultResource;
 use App\Models\Company;
 use App\Models\Result;
 use App\Services\CompanyRaffleResultService;
@@ -20,12 +21,20 @@ class CompanyResultController extends Controller
 
     public function index(Request $request, Company $company)
     {
-        return $company->results()
-            ->with('raffle:id,name,background_color')
-            ->when($request->hour, fn ($query) => $query->where('hour', $request->hour))
-            ->when($request->raffle_id, fn ($query) => $query->where('raffle_id', $request->raffle_id))
+        $data = $company->results()
+            ->with('raffle:id,name')
+            ->when(
+                $request->hour,
+                fn($query) => $query->where('hour', $request->hour)
+            )
+            ->when(
+                $request->raffle_id,
+                fn($query) => $query->where('raffle_id', $request->raffle_id)
+            )
             ->latest()
             ->paginate();
+
+        return ResultResource::collection($data);
     }
 
     public function store(CompanyResultRequest $request, Company $company)

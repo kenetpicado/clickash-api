@@ -33,6 +33,11 @@ class Company extends Model
         return $this->hasMany(Sale::class);
     }
 
+    public function locks()
+    {
+        return $this->hasMany(Lock::class);
+    }
+
     public function hasThisRaffle($raffle_id)
     {
         return $this->raffles()->where('id', $raffle_id)->exists();

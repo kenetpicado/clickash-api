@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CompanyController;
+use App\Http\Controllers\API\CompanyLockController;
 use App\Http\Controllers\API\CompanyRaffleController;
 use App\Http\Controllers\API\CompanyReportController;
 use App\Http\Controllers\API\CompanyResultController;
@@ -52,6 +53,11 @@ Route::prefix('v1')->group(function () {
             ->middleware([VerifyCompany::class, VerifyHasRaffle::class, VerifyCompanyHasSale::class]);
 
         Route::get('empresas/{company}/reporte', CompanyReportController::class)
+            ->middleware([VerifyCompany::class, VerifyHasRaffle::class]);
+
+        Route::apiResource('empresas.bloqueos', CompanyLockController::class)
+            ->parameters(['empresas' => 'company', 'bloqueos' => 'lock'])
+            ->only(['index', 'store', 'destroy'])
             ->middleware([VerifyCompany::class, VerifyHasRaffle::class]);
     });
 });

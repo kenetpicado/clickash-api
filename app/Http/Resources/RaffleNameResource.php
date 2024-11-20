@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class RaffleResource extends JsonResource
+class RaffleNameResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,12 +17,6 @@ class RaffleResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'description' => $this->description,
-            'company' => CompanyResource::make($this->company),
-            'participants' => $this->participants->count(),
-            'winner' => $this->winner,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
         ];
     }
 }
