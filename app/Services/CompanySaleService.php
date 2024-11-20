@@ -7,7 +7,7 @@ use App\Models\Sale;
 
 class CompanySaleService
 {
-    public function store(array $data, $company): void
+    public function store(array $data, $company): Sale
     {
         $raffle = Raffle::find($data['raffle_id']);
 
@@ -36,5 +36,7 @@ class CompanySaleService
         ]);
 
         $sale->items()->createMany($items->toArray());
+
+        return $sale->load(['raffle:id,name', 'user:id,name', 'items']);
     }
 }

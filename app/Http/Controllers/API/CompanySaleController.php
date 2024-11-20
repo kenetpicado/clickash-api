@@ -43,9 +43,9 @@ class CompanySaleController extends Controller
 
     public function store(CompanySaleRequest $request, Company $company)
     {
-        $this->service->store($request->validated(), $company);
+        $sale = $this->service->store($request->validated(), $company);
 
-        return response()->noContent(200);
+        return SaleResource::make($sale);
     }
 
     public function show(Company $company, Sale $sale)
