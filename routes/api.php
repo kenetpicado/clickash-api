@@ -13,6 +13,7 @@ use App\Http\Controllers\API\WorkspaceController;
 use App\Http\Middleware\Activity;
 use App\Http\Middleware\VerifyCompany;
 use App\Http\Middleware\VerifyCompanyHasSale;
+use App\Http\Middleware\VerifyCompanyHasUser;
 use App\Http\Middleware\VerifyHasRaffle;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +59,6 @@ Route::prefix('v1')->group(function () {
         Route::apiResource('empresas.bloqueos', CompanyLockController::class)
             ->parameters(['empresas' => 'company', 'bloqueos' => 'lock'])
             ->only(['index', 'store', 'destroy'])
-            ->middleware([VerifyCompany::class, VerifyHasRaffle::class]);
+            ->middleware([VerifyCompany::class, VerifyHasRaffle::class, VerifyCompanyHasUser::class]);
     });
 });
