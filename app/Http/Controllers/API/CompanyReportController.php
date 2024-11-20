@@ -17,8 +17,18 @@ class CompanyReportController extends Controller
                 fn($query) => $query
                     ->where('raffle_id', $request->raffle_id)
                     ->where('company_id', $company->id)
-                    ->when($request->hour, fn($query) => $query->where('hour', $request->hour))
-                    ->when($request->date, fn($query) => $query->whereDate('sales.created_at', $request->date))
+                    ->when(
+                        $request->hour,
+                        fn($query) => $query->where('hour', $request->hour)
+                    )
+                    ->when(
+                        $request->date,
+                        fn($query) => $query->whereDate('sales.created_at', $request->date)
+                    )
+                    ->when(
+                        $request->user_id,
+                        fn($query) => $query->where('user_id', $request->user_id)
+                    )
             )
             ->selectRaw('value, sum(total) as total')
             ->groupBy('value')

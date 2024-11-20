@@ -55,7 +55,7 @@ Route::prefix('v1')->group(function () {
             ->middleware([VerifyCompany::class, VerifyHasRaffle::class, VerifyCompanyHasSale::class]);
 
         Route::get('empresas/{company}/reporte', CompanyReportController::class)
-            ->middleware([VerifyCompany::class, VerifyHasRaffle::class]);
+            ->middleware([VerifyCompany::class, VerifyHasRaffle::class, VerifyCompanyHasUser::class]);
 
         Route::apiResource('empresas.bloqueos', CompanyLockController::class)
             ->parameters(['empresas' => 'company', 'bloqueos' => 'lock'])
