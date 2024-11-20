@@ -7,6 +7,7 @@ use App\Http\Controllers\API\CompanyRaffleController;
 use App\Http\Controllers\API\CompanyReportController;
 use App\Http\Controllers\API\CompanyResultController;
 use App\Http\Controllers\API\CompanySaleController;
+use App\Http\Controllers\API\CompanyWinnerController;
 use App\Http\Controllers\API\ProfileController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\WorkspaceController;
@@ -60,5 +61,8 @@ Route::prefix('v1')->group(function () {
             ->parameters(['empresas' => 'company', 'bloqueos' => 'lock'])
             ->only(['index', 'store', 'destroy'])
             ->middleware([VerifyCompany::class, VerifyHasRaffle::class, VerifyCompanyHasUser::class]);
+
+        Route::get('empresas/{company}/ganadores', CompanyWinnerController::class)
+            ->middleware([VerifyCompany::class, VerifyHasRaffle::class]);
     });
 });

@@ -21,8 +21,8 @@ class SaleItemResource extends JsonResource
             'super_x' => $this->super_x,
             'total' => $this->total,
             'status' => $this->status,
-            'hour' => $this->hour,
             'prize' => $this->prize,
+            'sale' => SaleResource::make($this->whenLoaded('sale')),
         ];
     }
 }
