@@ -8,6 +8,7 @@ use App\Http\Controllers\API\CompanyReportController;
 use App\Http\Controllers\API\CompanyResultController;
 use App\Http\Controllers\API\CompanySaleController;
 use App\Http\Controllers\API\CompanyWinnerController;
+use App\Http\Controllers\API\PlanController;
 use App\Http\Controllers\API\ProfileController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\WorkspaceController;
@@ -22,6 +23,8 @@ Route::prefix('v1')->group(function () {
     Route::post('entrar', [AuthController::class, 'login']);
 
     Route::post('registro', [AuthController::class, 'register']);
+
+    Route::get('planes', [PlanController::class, 'index']);
 
     Route::middleware(['auth:sanctum', Activity::class])->group(function () {
         Route::post('salir', [AuthController::class, 'logout']);
