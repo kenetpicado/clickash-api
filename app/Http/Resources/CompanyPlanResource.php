@@ -16,6 +16,7 @@ class CompanyPlanResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'summary' => 'Este plan incluye capacidad para ' . $this->users_limit . ' usuarios, desde ' . $this->started_at->format('d/m/Y') . ' hasta ' . $this->expires_at->format('d/m/Y'),
             'current' => Carbon::now()->between($this->started_at, $this->expires_at),
             'users_limit' => $this->users_limit,
             'payment_method' => $this->payment_method,
