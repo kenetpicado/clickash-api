@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\BuyPlanController;
 use App\Http\Controllers\API\CompanyController;
 use App\Http\Controllers\API\CompanyLockController;
 use App\Http\Controllers\API\CompanyRaffleController;
@@ -67,5 +68,7 @@ Route::prefix('v1')->group(function () {
 
         Route::get('empresas/{company}/ganadores', CompanyWinnerController::class)
             ->middleware([VerifyCompany::class, VerifyHasRaffle::class]);
+
+        Route::post('planes/{plan}/comprar', BuyPlanController::class);
     });
 });

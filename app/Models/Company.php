@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\PlanStatusEnum;
 use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
@@ -36,6 +37,14 @@ class Company extends Model
     public function locks()
     {
         return $this->hasMany(Lock::class);
+    }
+
+    public function plans()
+    {
+        return $this->belongsToMany(Plan::class)
+            ->withPivot((new CompanyPlan())->getFillable())
+            ->using(CompanyPlan::class)
+            ->withTimestamps();
     }
 
     public function hasThisRaffle($raffle_id)
