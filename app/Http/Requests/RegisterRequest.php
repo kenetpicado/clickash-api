@@ -23,7 +23,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'username' => ['required', 'unique:users,username', 'regex:/^\S*$/'],
+            'username' => ['required', 'unique:users,username'],
             'password' => ['required', 'min:8'],
         ];
     }
@@ -31,7 +31,6 @@ class RegisterRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'username.regex' => 'El nombre de usuario no puede contener espacios.',
             'username.unique' => 'El nombre de usuario no está disponible.',
         ];
     }
