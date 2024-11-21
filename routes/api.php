@@ -36,7 +36,7 @@ Route::prefix('v1')->group(function () {
 
         Route::apiResource('empresas', CompanyController::class)
             ->parameters(['empresas' => 'company'])
-            ->only(['index', 'update']);
+            ->only(['index', 'show', 'update']);
 
         Route::apiResource('usuarios', UserController::class)
             ->parameter('usuarios', 'user')
