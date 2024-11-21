@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BuyPlanRequest;
 use App\Models\Plan;
 use App\Services\PlanService;
-use Illuminate\Http\Request;
 
 class BuyPlanController extends Controller
 {

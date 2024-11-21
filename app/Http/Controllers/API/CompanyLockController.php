@@ -19,11 +19,11 @@ class CompanyLockController extends Controller
             ->latest()
             ->when(
                 $request->raffle_id,
-                fn($query) => $query->where('raffle_id', $request->raffle_id)
+                fn ($query) => $query->where('raffle_id', $request->raffle_id)
             )
             ->when(
                 $request->user_id,
-                fn($query) => $query->where('user_id', $request->user_id)
+                fn ($query) => $query->where('user_id', $request->user_id)
             )
             ->paginate();
 

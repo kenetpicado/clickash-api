@@ -10,7 +10,7 @@ class Plan extends Model
         'name',
         'description',
         'price',
-        'discount'
+        'discount',
     ];
 
     public function benefits()

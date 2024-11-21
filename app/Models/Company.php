@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\PlanStatusEnum;
 use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
@@ -42,7 +41,7 @@ class Company extends Model
     public function plans()
     {
         return $this->belongsToMany(Plan::class)
-            ->withPivot((new CompanyPlan())->getFillable())
+            ->withPivot((new CompanyPlan)->getFillable())
             ->using(CompanyPlan::class)
             ->withTimestamps();
     }

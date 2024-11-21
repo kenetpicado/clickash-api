@@ -25,11 +25,11 @@ class CompanyResultController extends Controller
             ->with('raffle:id,name')
             ->when(
                 $request->hour,
-                fn($query) => $query->where('hour', $request->hour)
+                fn ($query) => $query->where('hour', $request->hour)
             )
             ->when(
                 $request->raffle_id,
-                fn($query) => $query->where('raffle_id', $request->raffle_id)
+                fn ($query) => $query->where('raffle_id', $request->raffle_id)
             )
             ->latest()
             ->paginate();

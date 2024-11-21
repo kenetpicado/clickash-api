@@ -21,6 +21,7 @@ class PlanResource extends JsonResource
             'price' => $this->price,
             'discount' => $this->discount,
             'benefits' => BenefitResource::collection($this->whenLoaded('benefits')),
+            'pivot' => CompanyPlanResource::make($this->whenLoaded('pivot')),
         ];
     }
 }

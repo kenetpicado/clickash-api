@@ -16,7 +16,7 @@ class SaleResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'invoice' => 'No. ' . str_pad($this->id, 6, '0', STR_PAD_LEFT),
+            'invoice' => 'No. '.str_pad($this->id, 6, '0', STR_PAD_LEFT),
             'hour' => $this->hour,
             'total' => $this->total,
             'client' => $this->client,

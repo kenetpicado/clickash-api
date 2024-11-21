@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Enums\PlanStatusEnum;
+use App\Http\Resources\PlanResource;
 use App\Models\Company;
 use App\Models\Plan;
 
@@ -12,11 +13,11 @@ class PlanService
     {
         $company = Company::find($data['company_id']);
 
-        if (!$company->imOwner()) {
+        if (! $company->imOwner()) {
             abort(403, 'No puedes comprar un plan para una empresa que no eres dueño');
         }
 
-        if (!$plan->price) {
+        if (! $plan->price) {
             abort(403, 'El plan gratuito se asigna por defecto');
         }
 
@@ -49,7 +50,7 @@ class PlanService
             'expires_at' => $now->copy()->addMonths($data['months_count']),
         ]);
 
-        return $this->getActivePlan($company, $plan->id, $now);
+        return PlanResource::make($this->getActivePlan($company, $plan->id, $now));
     }
 
     private function getActivePlan($company, $plan_id, $now)
