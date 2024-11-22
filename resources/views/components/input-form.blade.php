@@ -8,12 +8,15 @@
     </div>
 
     <input id="{{ $name }}" type="{{ $type }}" placeholder="{{ $placeholder }}"
-        @if ($required) required @endif name="{{ $name }}"
+        @if ($required) required @endif name="{{ $name }}" wire:model="{{ $name }}"
         class="input input-bordered w-full" />
 
-    {{-- <div class="label">
-      <span class="label-text-alt text-red-400">
-        Error
-      </span>
-    </div> --}}
+    @error('form.title')
+        <div class="label">
+            <span class="label-text-alt text-red-400">
+                {{ $message }}
+            </span>
+        </div>
+    @enderror
+
 </div>

@@ -17,7 +17,6 @@
 <body class="bg-gray-50">
     <div class="drawer lg:drawer-open">
         <input id="sidebar" type="checkbox" class="drawer-toggle" />
-
         <div class="drawer-content w-full min-h-screen">
             <x-header />
             <main class="p-5">
@@ -30,7 +29,6 @@
             <x-sidebar />
         </div>
     </div>
-
     @livewireScripts
 </body>
 
