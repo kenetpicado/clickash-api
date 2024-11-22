@@ -3,6 +3,9 @@
 
     <div class="flex justify-between mb-8 items-center">
         <h1 class="text-2xl font-bold">Planes</h1>
+        <a href="{{ route('dashboard.plans.create') }}" class="btn btn-neutral">
+            Agregar plan
+        </a>
     </div>
 
     <div class="overflow-x-auto border rounded-xl bg-white">
@@ -24,7 +27,7 @@
                             {{ $plan->id }}
                         </td>
                         <td>
-                            <div class="mb-1 text-lg font-bold">
+                            <div class="mb-1 font-bold">
                                 {{ $plan->name }}
                             </div>
                             <div class="text-sm text-gray-400">

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Plans;
+namespace App\Livewire\Plan;
 
 use App\Models\Plan;
 use Livewire\Component;
@@ -11,7 +11,7 @@ class Index extends Component
     {
         $plans = Plan::all();
 
-        return view('livewire.plans.index', [
+        return view('livewire.plan.index', [
             'plans' => $plans
         ]);
     }
