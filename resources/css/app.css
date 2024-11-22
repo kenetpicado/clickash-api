@@ -5,3 +5,9 @@
 th {
     text-transform: uppercase;
 }
+
+@font-face {
+    font-family: 'SF';
+    font-style: normal;
+    src: url('../../public/fonts/SF-Pro-Text-Regular.otf') format('opentype');
+}
