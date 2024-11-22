@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('username');
+            $table->string('is_root')->default(false);
             $table->timestamp('last_activity')->nullable();
             $table->timestamp('username_verified_at')->nullable();
             $table->string('password');
