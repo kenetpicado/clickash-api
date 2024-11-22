@@ -44,7 +44,14 @@
                             ${{ $plan->price - $plan->discount }}
                         </td>
                         <td>
-                            <button class="btn btn-sm">Detalles</button>
+                            <div class="flex gap-2">
+                                <a href="{{ route('dashboard.plans.show', $plan->id) }}" class="btn btn-sm">
+                                    Detalles
+                                </a>
+                                <a href="{{ route('dashboard.plans.edit', $plan->id) }}" class="btn btn-sm">
+                                    Editar
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

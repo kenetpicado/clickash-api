@@ -19,7 +19,7 @@
         <input id="sidebar" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content w-full min-h-screen">
             <x-header />
-            <main class="p-5">
+            <main class="p-8">
                 {{ $slot }}
             </main>
         </div>

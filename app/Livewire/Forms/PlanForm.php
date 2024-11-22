@@ -28,4 +28,13 @@ class PlanForm extends Form
 
         $this->reset();
     }
+
+    public function update(Plan $plan)
+    {
+        $this->validate();
+
+        $plan->update($this->all());
+
+        $this->reset();
+    }
 }

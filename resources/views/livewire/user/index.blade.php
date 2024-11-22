@@ -1,7 +1,7 @@
 <div>
     @section('title', 'Usuarios')
 
-    <div class="flex justify-between mb-8 items-center">
+    <div class="flex justify-between items-center mb-8">
         <h1 class="text-2xl font-bold">Usuarios</h1>
     </div>
 
