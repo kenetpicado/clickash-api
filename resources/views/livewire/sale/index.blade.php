@@ -5,43 +5,61 @@
         <h1 class="text-2xl font-bold">Ventas</h1>
     </div>
 
+    <div class="grid grid-cols-4 gap-4 mb-8">
+        <x-select-filter text="Compañias" name="company_id">
+            <option value="">Todas</option>
+            @foreach ($companies as $company)
+                <option value="{{ $company->id }}">{{ $company->name }} ({{ $company->id }})</option>
+            @endforeach
+        </x-select-filter>
+
+        @if ($company_id)
+            <x-select-filter text="Rifas" name="raffle_id">
+                <option value="">Todas</option>
+                @foreach ($companies->firstWhere('id', $company_id)->raffles as $raffle)
+                    <option value="{{ $raffle->id }}">{{ $raffle->name }}</option>
+                @endforeach
+            </x-select-filter>
+        @endif
+    </div>
+
     <div class="overflow-x-auto border rounded-xl bg-white mb-4">
         <table class="table">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Rifa</th>
-                    <th>Usuario</th>
                     <th>Compañia</th>
+                    <th>Rifa</th>
                     <th>Turno</th>
-                    <th>Total</th>
+                    <th>Usuario</th>
                     <th>Cliente</th>
+                    <th>Total</th>
                     <th>Fecha</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($sales as $sale)
+                @forelse ($sales as $sale)
                     <tr>
                         <td>
                             {{ $sale->id }}
                         </td>
                         <td>
-                            {{ $sale->raffle->name }}
-                        </td>
-                        <td>
-                            {{ $sale->user->name }}
-                        </td>
-                        <td>
                             {{ $sale->company->name }}
+                        </td>
+                        <td>
+                            {{ $sale->raffle->name }}
                         </td>
                         <td>
                             {{ $sale->hour }}
                         </td>
                         <td>
-                            C$ {{ $sale->total }}
+                            {{ $sale->user->name }}
                         </td>
                         <td>
                             {{ $sale->client }}
+                        </td>
+                        <td>
+                            C${{ $sale->total }}
                         </td>
                         <td>
                             {{ $sale->created_at->format('d/m/Y g:i A') }}
@@ -50,7 +68,11 @@
                             <a href="{{ route('dashboard.sales.show', $sale) }}" class="btn btn-sm">Detalles</a>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="8" class="text-center">No hay datos</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
