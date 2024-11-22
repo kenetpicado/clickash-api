@@ -200,13 +200,13 @@
                                     {{ $plan->pivot->users_limit }}
                                 </td>
                                 <td>
-                                    {{ $plan->pivot->price }}
+                                    $ {{ $plan->pivot->price }}
                                 </td>
                                 <td>
-                                    {{ $plan->pivot->discount }}
+                                    $ {{ $plan->pivot->discount }}
                                 </td>
                                 <td>
-                                    {{ $plan->pivot->total }}
+                                    $ {{ $plan->pivot->total }}
                                 </td>
                                 <td>
                                     <div class="mb-1">
@@ -228,7 +228,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="9" class="text-center">No hay planes registrados</td>
+                                <td colspan="12" class="text-center">No hay planes registrados</td>
                             </tr>
                         @endforelse
                     </tbody>

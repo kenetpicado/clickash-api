@@ -32,13 +32,13 @@
                             </div>
                         </td>
                         <td>
-                            C$ {{ $plan->price }}
+                            $ {{ $plan->price }}
                         </td>
                         <td>
-                            C$ {{ $plan->discount }}
+                            $ {{ $plan->discount }}
                         </td>
                         <td class="font-bold">
-                            C$ {{ $plan->price - $plan->discount }}
+                            $ {{ $plan->price - $plan->discount }}
                         </td>
                         <td>
                             <button class="btn">Detalles</button>
