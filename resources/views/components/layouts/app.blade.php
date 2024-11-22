@@ -14,7 +14,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body>
+<body class="bg-gray-50">
     <div class="drawer lg:drawer-open">
         <input id="sidebar" type="checkbox" class="drawer-toggle" />
 

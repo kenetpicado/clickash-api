@@ -5,7 +5,7 @@
         <h1 class="text-2xl font-bold">Planes</h1>
     </div>
 
-    <div class="overflow-x-auto border rounded-xl">
+    <div class="overflow-x-auto border rounded-xl bg-white">
         <table class="table">
             <thead>
                 <tr>

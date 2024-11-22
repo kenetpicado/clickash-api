@@ -1,4 +1,4 @@
-<div class="navbar border-b shadow-gray-100">
+<div class="navbar bg-white">
     <div class="flex-0 lg:hidden">
         <button class="btn btn-square btn-ghost">
             <label for="sidebar" class="drawer-button lg:hidden">

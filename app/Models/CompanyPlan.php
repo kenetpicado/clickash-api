@@ -9,6 +9,7 @@ class CompanyPlan extends Pivot
     protected $table = 'company_plan';
 
     protected $fillable = [
+        'id',
         'plan_id',
         'company_id',
         'users_limit',

@@ -1,4 +1,4 @@
-<aside class="bg-gray-50 min-h-screen w-80 border-r">
+<aside class="bg-white min-h-screen w-80">
 
     <div class="sticky top-0 z-20 items-center gap-2 bg-opacity-90 px-4 py-6 backdrop-blur flex">
         <span class="font-bold text-2xl">Clickash 4</span>
@@ -23,7 +23,7 @@
                 </summary>
                 <ul>
                     <li>
-                        <a href="/" class="group">Inicio</a>
+                        <a href="/inicio" class="group">Inicio</a>
                         <a href="/usuarios" class="group">Usuarios</a>
                         <a href="/planes" class="group">Planes</a>
                     </li>

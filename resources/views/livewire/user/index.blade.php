@@ -5,13 +5,15 @@
         <h1 class="text-2xl font-bold">Usuarios</h1>
     </div>
 
-    <div class="overflow-x-auto border rounded-xl">
+    <div class="overflow-x-auto border rounded-xl bg-white">
         <table class="table">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Nombre</th>
                     <th>Usuario</th>
+                    <th>Compañia</th>
+                    <th>Workspace</th>
                     <th>Actividad</th>
                     <th>Acciones</th>
                 </tr>
@@ -29,10 +31,16 @@
                             {{ $user->username }}
                         </td>
                         <td>
+                            {{ $user->company->name }} ({{ $user->company->status }})
+                        </td>
+                        <td>
+                            {{ $user->company->workspace_code }}
+                        </td>
+                        <td>
                             {{ $user->last_activity ? $user->last_activity->format('d/m/Y g:i A') : 'Nunca' }}
                         </td>
                         <td>
-                            <button class="btn">Detalles</button>
+                            <a href="{{ route('users.show', $user) }}" class="btn">Detalles</a>
                         </td>
                     </tr>
                 @endforeach
