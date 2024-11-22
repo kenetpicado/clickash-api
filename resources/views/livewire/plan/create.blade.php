@@ -11,7 +11,7 @@
     <div class="grid grid-cols-2 gap-4">
         <div>
             <h5 class="font-bold mb-4">Información del plan</h5>
-            <div class="border rounded-xl bg-white p-8 space-y-4">
+            <form wire:submit="save" class="border rounded-xl bg-white p-8 space-y-4">
                 <x-input-form text="Nombre" name="name" placeholder="Nombre del plan" />
                 <x-input-form text="Descripción" name="description" placeholder="Descripción del plan" />
                 <x-input-form text="Precio" type="number" name="price" placeholder="Precio del plan" />
@@ -20,9 +20,9 @@
                     <a href="{{ route('dashboard.plans.index') }}" class="btn">
                         Cancelar
                     </a>
-                    <button class="btn btn-neutral">Guardar</button>
+                    <button class="btn btn-neutral" type="submit">Guardar</button>
                 </div>
-            </div>
+            </form>
         </div>
         <div>
             <h5 class="font-bold mb-4">Beneficios del plan</h5>

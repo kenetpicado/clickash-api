@@ -1,4 +1,4 @@
-@props(['name', 'type' => 'text', 'text', 'placeholder' => '', 'required'])
+@props(['name', 'type' => 'text', 'text', 'placeholder' => '', 'required' => false])
 
 <div class="form-control w-full">
     <div class="label">
@@ -8,7 +8,8 @@
     </div>
 
     <input id="{{ $name }}" type="{{ $type }}" placeholder="{{ $placeholder }}"
-        required="{{ $required ?? false }}" name="{{ $name }}" class="input input-bordered w-full" />
+        @if ($required) required @endif name="{{ $name }}"
+        class="input input-bordered w-full" />
 
     {{-- <div class="label">
       <span class="label-text-alt text-red-400">
