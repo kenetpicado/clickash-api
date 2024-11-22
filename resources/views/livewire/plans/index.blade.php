@@ -32,16 +32,16 @@
                             </div>
                         </td>
                         <td>
-                            $ {{ $plan->price }}
+                            ${{ $plan->price }}
                         </td>
                         <td>
-                            $ {{ $plan->discount }}
+                            ${{ $plan->discount }}
                         </td>
                         <td class="font-bold">
-                            $ {{ $plan->price - $plan->discount }}
+                            ${{ $plan->price - $plan->discount }}
                         </td>
                         <td>
-                            <button class="btn">Detalles</button>
+                            <button class="btn btn-sm">Detalles</button>
                         </td>
                     </tr>
                 @endforeach

@@ -200,13 +200,13 @@
                                     {{ $plan->pivot->users_limit }}
                                 </td>
                                 <td>
-                                    $ {{ $plan->pivot->price }}
+                                    ${{ $plan->pivot->price }}
                                 </td>
                                 <td>
-                                    $ {{ $plan->pivot->discount }}
+                                    ${{ $plan->pivot->discount }}
                                 </td>
                                 <td>
-                                    $ {{ $plan->pivot->total }}
+                                    ${{ $plan->pivot->total }}
                                 </td>
                                 <td>
                                     <div class="mb-1">

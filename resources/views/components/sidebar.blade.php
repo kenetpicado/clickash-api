@@ -23,9 +23,10 @@
                 </summary>
                 <ul>
                     <li>
-                        <a href="/inicio" class="group">Inicio</a>
-                        <a href="/usuarios" class="group">Usuarios</a>
-                        <a href="/planes" class="group">Planes</a>
+                        <a href="{{ route('dashboard.home') }}" class="group">Inicio</a>
+                        <a href="{{ route('dashboard.users.index') }}" class="group">Usuarios</a>
+                        <a href="{{ route('dashboard.plans.index') }}" class="group">Planes</a>
+                        <a href="{{ route('dashboard.sales.index') }}" class="group">Ventas</a>
                     </li>
                 </ul>
             </details>
