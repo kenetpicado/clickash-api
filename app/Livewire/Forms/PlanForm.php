@@ -24,9 +24,11 @@ class PlanForm extends Form
     {
         $this->validate();
 
-        Plan::create($this->all());
+        $created = Plan::create($this->all());
 
         $this->reset();
+
+        return $created;
     }
 
     public function update(Plan $plan)

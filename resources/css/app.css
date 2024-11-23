@@ -11,3 +11,13 @@ th {
     font-style: normal;
     src: url('../../public/fonts/SF-Pro-Text-Regular.otf') format('opentype');
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+}

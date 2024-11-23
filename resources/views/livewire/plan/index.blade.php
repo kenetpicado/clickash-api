@@ -45,9 +45,6 @@
                         </td>
                         <td>
                             <div class="flex gap-2">
-                                <a href="{{ route('dashboard.plans.show', $plan->id) }}" class="btn btn-sm">
-                                    Detalles
-                                </a>
                                 <a href="{{ route('dashboard.plans.edit', $plan->id) }}" class="btn btn-sm">
                                     Editar
                                 </a>

@@ -16,8 +16,8 @@ class Create extends Component
 
     public function submit()
     {
-        $this->form->store();
+        $created = $this->form->store();
 
-        return redirect()->route('dashboard.plans.index');
+        return redirect()->route('dashboard.plans.edit', $created);
     }
 }
