@@ -160,14 +160,11 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th>Estado</th>
                             <th>Periodo</th>
                             <th>Plan</th>
                             <th>Usuarios</th>
-                            <th>Precio</th>
-                            <th>Descuento</th>
-                            <th>Total</th>
+                            <th>Pagado</th>
                             <th>Método de pago</th>
                             <th>Estado de pago</th>
                             <th>Pagado el</th>
@@ -177,9 +174,6 @@
                     <tbody>
                         @forelse ($user->company->plans->sortBy('expires_at') as $plan)
                             <tr>
-                                <td>
-                                    {{ $plan->pivot->id }}
-                                </td>
                                 <td>
                                     @if ($plan->pivot->expires_at->isPast())
                                         <span class="badge badge-ghost">Expirado</span>
@@ -198,12 +192,6 @@
                                 </td>
                                 <td>
                                     {{ $plan->pivot->users_limit }}
-                                </td>
-                                <td>
-                                    ${{ $plan->pivot->price }}
-                                </td>
-                                <td>
-                                    ${{ $plan->pivot->discount }}
                                 </td>
                                 <td>
                                     ${{ $plan->pivot->total }}

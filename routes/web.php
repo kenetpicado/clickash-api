@@ -2,6 +2,8 @@
 
 use App\Livewire\Home;
 use App\Livewire\Plan\Index as PlanIndex;
+use App\Livewire\Session\Index as SessionIndex;
+use App\Livewire\PersonalAccessToken\Index as PersonalAccessTokenIndex;
 use App\Livewire\Plan\Create as PlanCreate;
 use App\Livewire\Plan\Edit as PlanEdit;
 use App\Livewire\User\Index as UserIndex;
@@ -30,4 +32,8 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::get('/ventas', SaleIndex::class)->name('sales.index');
 
     Route::get('/ventas/{sale}', SaleShow::class)->name('sales.show');
+
+    Route::get('/sesiones', SessionIndex::class)->name('sessions.index');
+
+    Route::get('/tokens-de-acceso-personal', PersonalAccessTokenIndex::class)->name('personal-access-tokens.index');
 });
