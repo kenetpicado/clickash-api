@@ -15,4 +15,9 @@ class Index extends Component
             'personalAccessTokens' => $personalAccessTokens,
         ]);
     }
+
+    public function delete(PersonalAccessToken $personalAccessToken)
+    {
+        $personalAccessToken->delete();
+    }
 }

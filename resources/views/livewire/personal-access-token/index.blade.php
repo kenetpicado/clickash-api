@@ -38,7 +38,9 @@
                             {{ $item->created_at->format('d/m/Y g:i A') }}
                         </td>
                         <td>
-                            -
+                            <button wire:click="delete({{ $item }})" type="button" class="btn btn-sm">
+                                Detalles
+                            </button>
                         </td>
                     </tr>
                 @endforeach
