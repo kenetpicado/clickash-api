@@ -10,12 +10,6 @@ class AuthService
 {
     public function register(array $data): string
     {
-        if (! filter_var($data['username'], FILTER_VALIDATE_EMAIL)) {
-            if (! preg_match('/^[0-9]{8}$/', $data['username'])) {
-                abort(422, 'El nombre de usuario debe ser un correo o un número de teléfono de 8 dígitos');
-            }
-        }
-
         $user = User::create($data);
 
         do {
@@ -25,7 +19,7 @@ class AuthService
         $name = explode(' ', $user->name)[0];
 
         $company = $user->company()->create([
-            'name' => 'Rifas ' . $name,
+            'name' => $name . '\'s Company',
             'workspace_code' => $workspaceCode,
             'status' => 'ACTIVO',
         ]);
@@ -40,7 +34,7 @@ class AuthService
             });
 
         $company->raffles()->create([
-            'name' => $name . ' Rifa',
+            'name' => 'Rifa: ' . $name,
             'description' => 'Esta es una rifa de prueba',
             'min' => '01',
             'max' => '99',

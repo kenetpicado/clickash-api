@@ -20,6 +20,12 @@ class CompanyRaffleController extends Controller
     {
         Gate::authorize('company-owner', $company);
 
+        $blockedNames = ['Diaria', 'La Hondureña', '3 Monazos'];
+
+        if (in_array($request->name, $blockedNames)) {
+            abort(400, 'El nombre de la rifa no está permitido');
+        }
+
         $company->raffles()->create($request->validated());
 
         return response()->noContent(200);
