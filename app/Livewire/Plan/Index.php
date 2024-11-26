@@ -12,7 +12,7 @@ class Index extends Component
         $plans = Plan::all();
 
         return view('livewire.plan.index', [
-            'plans' => $plans
+            'plans' => $plans,
         ]);
     }
 }

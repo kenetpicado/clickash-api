@@ -19,7 +19,7 @@ class AuthService
         $name = explode(' ', $user->name)[0];
 
         $company = $user->company()->create([
-            'name' => $name . '\'s Company',
+            'name' => $name.'\'s Company',
             'workspace_code' => $workspaceCode,
             'status' => 'ACTIVO',
         ]);
@@ -34,7 +34,7 @@ class AuthService
             });
 
         $company->raffles()->create([
-            'name' => 'Rifa: ' . $name,
+            'name' => 'Rifa: '.$name,
             'description' => 'Esta es una rifa de prueba',
             'min' => '01',
             'max' => '99',

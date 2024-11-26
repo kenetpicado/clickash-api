@@ -15,14 +15,14 @@
                 </summary>
                 <ul>
                     <li>
-                        <a href="{{ route('dashboard.home') }}"
-                            class="group {{ request()->routeIs('dashboard.home') ? 'active' : '' }}">Inicio</a>
-                        <a href="{{ route('dashboard.users.index') }}"
-                            class="group {{ request()->routeIs('dashboard.users.index') ? 'active' : '' }}">Usuarios</a>
-                        <a href="{{ route('dashboard.plans.index') }}"
-                            class="group {{ request()->routeIs('dashboard.plans.index') ? 'active' : '' }}">Planes</a>
-                        <a href="{{ route('dashboard.sales.index') }}"
-                            class="group {{ request()->routeIs('dashboard.sales.index') ? 'active' : '' }}">Ventas</a>
+                        <a href="{{ route('home') }}"
+                            class="group {{ request()->routeIs('home') ? 'active' : '' }}">Inicio</a>
+                        <a href="{{ route('users.index') }}"
+                            class="group {{ request()->routeIs('users.index') ? 'active' : '' }}">Usuarios</a>
+                        <a href="{{ route('plans.index') }}"
+                            class="group {{ request()->routeIs('plans.index') ? 'active' : '' }}">Planes</a>
+                        <a href="{{ route('sales.index') }}"
+                            class="group {{ request()->routeIs('sales.index') ? 'active' : '' }}">Ventas</a>
                     </li>
                 </ul>
             </details>
@@ -35,12 +35,12 @@
                 </summary>
                 <ul>
                     <li>
-                        <a href="{{ route('dashboard.sessions.index') }}"
-                            class="group {{ request()->routeIs('dashboard.sessions.index') ? 'active' : '' }}">
+                        <a href="{{ route('sessions.index') }}"
+                            class="group {{ request()->routeIs('sessions.index') ? 'active' : '' }}">
                             Web
                         </a>
-                        <a href="{{ route('dashboard.personal-access-tokens.index') }}"
-                            class="group {{ request()->routeIs('dashboard.personal-access-tokens.index') ? 'active' : '' }}">
+                        <a href="{{ route('personal-access-tokens.index') }}"
+                            class="group {{ request()->routeIs('personal-access-tokens.index') ? 'active' : '' }}">
                             Móvl
                         </a>
                     </li>

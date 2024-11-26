@@ -40,7 +40,7 @@
                             {{ $user->last_activity ? $user->last_activity->format('d/m/Y g:i A') : 'Nunca' }}
                         </td>
                         <td>
-                            <a href="{{ route('dashboard.users.show', $user) }}" class="btn btn-sm">Detalles</a>
+                            <a href="{{ route('users.show', $user) }}" class="btn btn-sm">Detalles</a>
                         </td>
                     </tr>
                 @empty

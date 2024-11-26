@@ -12,7 +12,7 @@ class Index extends Component
         $users = User::latest()->has('company')->with('company')->get();
 
         return view('livewire.user.index', [
-            'users' => $users
+            'users' => $users,
         ]);
     }
 }

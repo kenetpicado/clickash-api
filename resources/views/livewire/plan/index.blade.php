@@ -3,7 +3,7 @@
 
     <div class="flex justify-between mb-8 items-center">
         <h1 class="text-2xl font-bold">Planes</h1>
-        <a href="{{ route('dashboard.plans.create') }}" class="btn btn-neutral">
+        <a href="{{ route('plans.create') }}" class="btn btn-neutral">
             Agregar plan
         </a>
     </div>
@@ -37,7 +37,7 @@
                         </td>
                         <td>
                             <div class="flex gap-2">
-                                <a href="{{ route('dashboard.plans.edit', $plan->id) }}" class="btn btn-sm">
+                                <a href="{{ route('plans.edit', $plan->id) }}" class="btn btn-sm">
                                     Editar
                                 </a>
                             </div>

@@ -27,7 +27,7 @@
                 <x-input-form text="Descripción" name="form.description" placeholder="Descripción del plan" required />
                 <x-input-form text="Precio" type="number" name="form.price" placeholder="Precio" required />
                 <div class="flex items-center justify-end gap-4">
-                    <a href="{{ route('dashboard.plans.index') }}" class="btn">
+                    <a href="{{ route('plans.index') }}" class="btn">
                         Cancelar
                     </a>
                     <button class="btn btn-neutral" type="submit">Guardar</button>

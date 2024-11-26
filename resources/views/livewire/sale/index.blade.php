@@ -65,7 +65,7 @@
                             {{ $sale->created_at->format('d/m/Y g:i A') }}
                         </td>
                         <td>
-                            <a href="{{ route('dashboard.sales.show', $sale) }}" class="btn btn-sm">Detalles</a>
+                            <a href="{{ route('sales.show', $sale) }}" class="btn btn-sm">Detalles</a>
                         </td>
                     </tr>
                 @empty

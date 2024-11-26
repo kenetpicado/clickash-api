@@ -18,6 +18,6 @@ class Create extends Component
     {
         $created = $this->form->store();
 
-        return redirect()->route('dashboard.plans.edit', $created);
+        return redirect()->route('plans.edit', $created);
     }
 }

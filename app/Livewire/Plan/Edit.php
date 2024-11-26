@@ -11,7 +11,9 @@ use Livewire\Component;
 class Edit extends Component
 {
     public PlanForm $form;
+
     public BenefitForm $benefitForm;
+
     public Plan $plan;
 
     public function mount(Plan $plan)
