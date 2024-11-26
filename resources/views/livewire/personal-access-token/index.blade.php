@@ -20,7 +20,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($personalAccessTokens as $item)
+                @forelse ($personalAccessTokens as $item)
                     <tr>
                         <td>
                             {{ $item->tokenable?->name }}
@@ -43,7 +43,11 @@
                             </button>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="6" class="text-center">No hay datos</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Livewire\Home;
 use App\Livewire\Plan\Index as PlanIndex;
 use App\Livewire\Session\Index as SessionIndex;
@@ -16,7 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+
+Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'auth'], function () {
     Route::get('/', Home::class)->name('home');
 
     Route::get('/usuarios', UserIndex::class)->name('users.index');

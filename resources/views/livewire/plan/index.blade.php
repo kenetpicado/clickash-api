@@ -15,8 +15,6 @@
                     <th>#</th>
                     <th>Nombre</th>
                     <th>Precio</th>
-                    <th>Descuento</th>
-                    <th>Precio final</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -36,12 +34,6 @@
                         </td>
                         <td>
                             ${{ $plan->price }}
-                        </td>
-                        <td>
-                            ${{ $plan->discount }}
-                        </td>
-                        <td class="font-bold">
-                            ${{ $plan->price - $plan->discount }}
                         </td>
                         <td>
                             <div class="flex gap-2">

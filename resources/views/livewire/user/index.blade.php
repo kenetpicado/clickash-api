@@ -19,7 +19,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $user)
+                @forelse ($users as $user)
                     <tr>
                         <td>
                             {{ $user->id }}
@@ -43,7 +43,11 @@
                             <a href="{{ route('dashboard.users.show', $user) }}" class="btn btn-sm">Detalles</a>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="7" class="text-center">No hay usuarios registrados</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

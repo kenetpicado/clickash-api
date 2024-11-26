@@ -20,7 +20,12 @@
             </div>
             <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                 <li><a>Perfil</a></li>
-                <li><a>Salir</a></li>
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit">Cerrar sesión</button>
+                    </form>
+                </li>
             </ul>
         </div>
     </div>
