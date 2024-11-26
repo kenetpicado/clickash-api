@@ -22,7 +22,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => 'required|exists:users,username',
+            'username' => ['required', 'integer', 'exists:users,username', 'digits:8'],
             'password' => 'required',
         ];
     }
@@ -30,7 +30,14 @@ class LoginRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'username.exists' => 'El nombre de usuario no está registrado.',
+            'username.exists' => 'El :attribute no está registrado.',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'username' => 'número de teléfono',
         ];
     }
 }

@@ -23,7 +23,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'username' => ['required', 'unique:users,username'],
+            'username' => ['required', 'integer', 'unique:users,username', 'digits:8'],
             'password' => ['required', 'min:8'],
         ];
     }
@@ -31,7 +31,16 @@ class RegisterRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'username.unique' => 'El nombre de usuario no está disponible.',
+            'username.unique' => 'El :attribute no está disponible',
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'name' => 'nombre',
+            'username' => 'número de teléfono',
+            'password' => 'contraseña',
         ];
     }
 }

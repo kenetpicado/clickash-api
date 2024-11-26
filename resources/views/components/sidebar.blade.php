@@ -1,7 +1,7 @@
 <aside class="bg-white min-h-screen w-80">
 
     <div class="sticky top-0 z-20 items-center gap-2 bg-opacity-90 px-4 py-6 backdrop-blur flex">
-        <span class="font-bold text-2xl">Clickash 4</span>
+        <span class="font-bold text-2xl">ClickAsh</span>
     </div>
 
     <ul class="menu px-4 py-0">
