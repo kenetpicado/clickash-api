@@ -21,6 +21,8 @@ class WorkspaceController extends Controller
             abort(403, 'No puedes unirte a tu propia empresa');
         }
 
+        //TODO: VALIDAR SI LA EMPRESA TIENE ESPACIOS DISPONIBLES
+
         $company->users()->syncWithoutDetaching(auth()->id());
 
         return CompanyResource::make($company);

@@ -15,6 +15,14 @@ class UserController extends Controller
         return UserResource::collection($users);
     }
 
+    public function update(User $user)
+    {
+        //TODO: Actualizar el estado de activo - inactivo
+        //Solo puede estar activo si tiene espacio
+
+        return response()->noContent(200);
+    }
+
     public function destroy(User $user)
     {
         auth()->user()->company->users()->detach($user->id);
