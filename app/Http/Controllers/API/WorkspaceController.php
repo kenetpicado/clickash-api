@@ -14,7 +14,11 @@ class WorkspaceController extends Controller
         $company = Company::where('workspace_code', $request->workspace_code)->first();
 
         if (! $company) {
-            abort(404, 'No se encontró el espacio de trabajo.');
+            abort(404, 'No se encontró el espacio de trabajo');
+        }
+
+        if ($company->user_id === auth()->id()) {
+            abort(403, 'No puedes unirte a tu propia empresa');
         }
 
         $company->users()->syncWithoutDetaching(auth()->id());
