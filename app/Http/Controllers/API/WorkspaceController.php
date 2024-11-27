@@ -23,7 +23,9 @@ class WorkspaceController extends Controller
 
         //TODO: VALIDAR SI LA EMPRESA TIENE ESPACIOS DISPONIBLES
 
-        $company->users()->syncWithoutDetaching(auth()->id());
+        $company->users()->syncWithoutDetaching([
+            auth()->id() => ['status' => 'ACTIVO'],
+        ]);
 
         return CompanyResource::make($company);
     }
